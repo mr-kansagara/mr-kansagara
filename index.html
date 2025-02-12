@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raj Kansagara - Creative Portfolio</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Montserrat for body text and Pacifico for the logo -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for Color Scheme */
+    :root {
+      --primary-color: #6b11cb3a;
+      --secondary-color: #15429b;
+      --accent-color: #ff6b6b;
+      --bg-color: #1f1c2c;
+      --text-color: #ffffff;
+      --transition-speed: 0.3s;
+    }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Sidebar Navigation (Desktop) */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform var(--transition-speed);
+    }
+    .sidebar h2 {
+      font-family: 'Pacifico', cursive;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--text-color);
+    }
+    .sidebar nav ul {
+      list-style: none;
+      width: 100%;
+    }
+    .sidebar nav ul li {
+      margin: 1.2rem 0;
+    }
+    .sidebar nav ul li a {
+      display: block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-align: center;
+      transition: background var(--transition-speed);
+    }
+    .sidebar nav ul li a:hover {
+      background: var(--accent-color);
+    }
+    /* Mobile Navigation */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+      padding: 1rem;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .mobile-nav .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: var(--text-color);
+    }
+    .mobile-nav .menu-btn {
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: var(--bg-color);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
+    .mobile-menu a {
+      padding: 1rem;
+      border-bottom: 1px solid #333;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+    /* Main Content */
+    .main-content {
+      margin-left: 250px;
+      transition: margin-left var(--transition-speed);
+    }
+    /* Header Section with Custom Background Image */
+    header {
+      position: relative;
+      height: 100vh;
+      /* Set your desired background image URL here */
+      background: url('/my.jpg') no-repeat center center/cover;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    /* Overlay for better text contrast */
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header .header-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+      animation: fadeInUp 1s ease-out;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    header .button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--accent-color);
+      background: transparent;
+      color: var(--text-color);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background var(--transition-speed), color var(--transition-speed);
+    }
+    header .button:hover {
+      background: var(--accent-color);
+      color: #000;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Section Styles with Glassmorphism and Clip-Path */
+    section {
+      padding: 4rem 2rem;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+      position: relative;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      width: 100px;
+      height: 4px;
+      background: var(--accent-color);
+      margin: 0.5rem auto;
+      display: block;
+      border-radius: 2px;
+    }
+    section p, section li {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    section ul {
+      list-style: none;
+      padding: 0;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      margin-top: 2rem;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+      .main-content {
+        margin-left: 0;
+        padding-top: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="logo">Raj Kansagara</div>
+    <div class="menu-btn" onclick="toggleMobileMenu()">&#9776;</div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleMobileMenu()">Home</a>
+    <a href="#about" onclick="toggleMobileMenu()">About</a>
+    <a href="#skills" onclick="toggleMobileMenu()">Skills</a>
+    <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+    <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  </div>
+  
+  <!-- Sidebar Navigation (Desktop) -->
+  <div class="sidebar">
+    <h2>Raj Kansagara</h2>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header Section -->
+    <header id="home">
+      <div class="header-content">
+        <h1>Raj Kansagara</h1>
+        <p>Full Stack Web Developer</p>
+        <button class="button" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">Discover More</button>
+      </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a results-driven Full Stack Web Developer with expertise in ASP.NET Core, Angular, Web API, and Microsoft SQL Server. Passionate about creating scalable, high-quality web applications, I bring creativity and innovation to every project.
+      </p>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>Frontend: Angular, TypeScript, JavaScript, HTML, CSS</li>
+        <li>Backend: ASP.NET Core, C#, Web API</li>
+        <li>Database: Microsoft SQL Server, Entity Framework Core</li>
+        <li>Tools: Git, Postman, Serilog, NLog, RESTful API, Agile, CI/CD Pipelines</li>
+      </ul>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Work Experience</h2>
+      <h3>Anamya Tech LLP (Jan 2024 - Present)</h3>
+      <ul>
+        <li>Developed and maintained scalable web applications using ASP.NET Core and Angular.</li>
+        <li>Improved system performance by 30% through optimized API integrations.</li>
+        <li>Implemented authentication &amp; authorization, reducing security breaches by 40%.</li>
+      </ul>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <h3>Influencer Platform</h3>
+      <p>
+        Developed an influencer platform with API integration, social sharing, and a reward system.
+      </p>
+      <h3>Expense Tracker</h3>
+      <p>
+        Built a financial tracking system with secure JWT authentication and real-time transaction categorization.
+      </p>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>📞 +91 96017 75092</p>
+      <p>✉️ rajkansagara80@gmail.com</p>
+      <p>📍 Ahmedabad, India</p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Raj Kansagara. All rights reserved.</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleMobileMenu() {
+      var mobileMenu = document.getElementById('mobileMenu');
+      if(mobileMenu.style.display === 'flex') {
+        mobileMenu.style.display = 'none';
+      } else {
+        mobileMenu.style.display = 'flex';
+        mobileMenu.style.flexDirection = 'column';
+      }
+    }
+  </script>
+</body>
+</html>
