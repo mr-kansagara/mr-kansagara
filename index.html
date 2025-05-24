@@ -1,348 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raj Kansagara - Creative Portfolio</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Montserrat for body text and Pacifico for the logo -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    /* CSS Variables for Color Scheme */
-    :root {
-      --primary-color: #6b11cb3a;
-      --secondary-color: #15429b;
-      --accent-color: #ff6b6b;
-      --bg-color: #1f1c2c;
-      --text-color: #ffffff;
-      --transition-speed: 0.3s;
-    }
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* Sidebar Navigation (Desktop) */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform var(--transition-speed);
-    }
-    .sidebar h2 {
-      font-family: 'Pacifico', cursive;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: var(--text-color);
-    }
-    .sidebar nav ul {
-      list-style: none;
-      width: 100%;
-    }
-    .sidebar nav ul li {
-      margin: 1.2rem 0;
-    }
-    .sidebar nav ul li a {
-      display: block;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      text-align: center;
-      transition: background var(--transition-speed);
-    }
-    .sidebar nav ul li a:hover {
-      background: var(--accent-color);
-    }
-    /* Mobile Navigation */
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-      padding: 1rem;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    .mobile-nav .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8rem;
-      color: var(--text-color);
-    }
-    .mobile-nav .menu-btn {
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: var(--text-color);
-    }
-    .mobile-menu {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background: var(--bg-color);
-      display: none;
-      flex-direction: column;
-      z-index: 999;
-    }
-    .mobile-menu a {
-      padding: 1rem;
-      border-bottom: 1px solid #333;
-      font-size: 1.1rem;
-      color: var(--text-color);
-    }
-    /* Main Content */
-    .main-content {
-      margin-left: 250px;
-      transition: margin-left var(--transition-speed);
-    }
-    /* Header Section with Custom Background Image */
-    header {
-      position: relative;
-      height: 100vh;
-      /* Set your desired background image URL here */
-      background: url('/my.jpg') no-repeat center center/cover;
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    /* Overlay for better text contrast */
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-    header .header-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 1rem;
-      animation: fadeInUp 1s ease-out;
-    }
-    header h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-    header p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    header .button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      border: 2px solid var(--accent-color);
-      background: transparent;
-      color: var(--text-color);
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background var(--transition-speed), color var(--transition-speed);
-    }
-    header .button:hover {
-      background: var(--accent-color);
-      color: #000;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    /* Section Styles with Glassmorphism and Clip-Path */
-    section {
-      padding: 4rem 2rem;
-      margin: 2rem auto;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 8px 32px rgba(31,38,135,0.37);
-      position: relative;
-    }
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      position: relative;
-    }
-    section h2::after {
-      content: '';
-      width: 100px;
-      height: 4px;
-      background: var(--accent-color);
-      margin: 0.5rem auto;
-      display: block;
-      border-radius: 2px;
-    }
-    section p, section li {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    section ul {
-      list-style: none;
-      padding: 0;
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #111;
-      margin-top: 2rem;
-    }
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
-      }
-      .mobile-nav {
-        display: flex;
-      }
-      .main-content {
-        margin-left: 0;
-        padding-top: 70px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj Kansagara - Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: none;
+        }
+        
+        .name-container {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .name {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff8a00, #e52e71, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            color: #aaaaaa;
+            margin-top: 1rem;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 3rem;
+            }
+            .title {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav">
-    <div class="logo">Raj Kansagara</div>
-    <div class="menu-btn" onclick="toggleMobileMenu()">&#9776;</div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" onclick="toggleMobileMenu()">Home</a>
-    <a href="#about" onclick="toggleMobileMenu()">About</a>
-    <a href="#skills" onclick="toggleMobileMenu()">Skills</a>
-    <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
-    <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
-    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
-  </div>
-  
-  <!-- Sidebar Navigation (Desktop) -->
-  <div class="sidebar">
-    <h2>Raj Kansagara</h2>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-  
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Header Section -->
-    <header id="home">
-      <div class="header-content">
-        <h1>Raj Kansagara</h1>
-        <p>Full Stack Web Developer</p>
-        <button class="button" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });">Discover More</button>
-      </div>
-    </header>
+    <div class="name-container">
+        <h1 class="name" id="animated-name">Raj Kansagara</h1>
+        <p >                <h2 class="title">I developed things which are Imagine !</h2>
+</p>
+    </div>
+    <canvas class="particles" id="particles"></canvas>
+    <div class="cursor" id="cursor"></div>
+
+<script>
+    // Name hover animation
+    const name = document.getElementById('animated-name');
+    const letters = name.textContent.split('');
     
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a results-driven Full Stack Web Developer with expertise in ASP.NET Core, Angular, Web API, and Microsoft SQL Server. Passionate about creating scalable, high-quality web applications, I bring creativity and innovation to every project.
-      </p>
-    </section>
+    name.innerHTML = letters.map(letter => 
+        `<span class="name-letter">${letter === ' ' ? '&nbsp;' : letter}</span>`
+    ).join('');
     
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <ul>
-        <li>Frontend: Angular, TypeScript, JavaScript, HTML, CSS</li>
-        <li>Backend: ASP.NET Core, C#, Web API</li>
-        <li>Database: Microsoft SQL Server, Entity Framework Core</li>
-        <li>Tools: Git, Postman, Serilog, NLog, RESTful API, Agile, CI/CD Pipelines</li>
-      </ul>
-    </section>
+    const nameLetters = document.querySelectorAll('.name-letter');
     
-    <!-- Experience Section -->
-    <section id="experience">
-      <h2>Work Experience</h2>
-      <h3>Anamya Tech LLP (Jan 2024 - Present)</h3>
-      <ul>
-        <li>Developed and maintained scalable web applications using ASP.NET Core and Angular.</li>
-        <li>Improved system performance by 30% through optimized API integrations.</li>
-        <li>Implemented authentication &amp; authorization, reducing security breaches by 40%.</li>
-      </ul>
-    </section>
+    // Mouse move effects
+    document.addEventListener('mousemove', (e) => {
+        const cursor = document.getElementById('cursor');
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        // Name letters react to mouse position
+        nameLetters.forEach((letter, i) => {
+            const rect = letter.getBoundingClientRect();
+            const x = e.clientX - (rect.left + rect.width/2);
+            const y = e.clientY - (rect.top + rect.height/2);
+            const distance = Math.sqrt(x*x + y*y);
+            
+            // Scale effect
+            const scale = Math.max(1, 1.5 - distance/200);
+            letter.style.transform = `scale(${scale})`;
+            
+            // Color shift based on position
+            const hue = (i * 10 + e.clientX / window.innerWidth * 180) % 360;
+            letter.style.color = `hsl(${hue}, 80%, 65%)`;
+        });
+    });
     
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <h3>Influencer Platform</h3>
-      <p>
-        Developed an influencer platform with API integration, social sharing, and a reward system.
-      </p>
-      <h3>Expense Tracker</h3>
-      <p>
-        Built a financial tracking system with secure JWT authentication and real-time transaction categorization.
-      </p>
-    </section>
+    // Particle canvas
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>📞 +91 96017 75092</p>
-      <p>✉️ rajkansagara80@gmail.com</p>
-      <p>📍 Ahmedabad, India</p>
-    </section>
+    // Particles array
+    let particles = [];
+    const particleCount = 100;
     
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Raj Kansagara. All rights reserved.</p>
-    </footer>
-  </div>
-  
-  <script>
-    function toggleMobileMenu() {
-      var mobileMenu = document.getElementById('mobileMenu');
-      if(mobileMenu.style.display === 'flex') {
-        mobileMenu.style.display = 'none';
-      } else {
-        mobileMenu.style.display = 'flex';
-        mobileMenu.style.flexDirection = 'column';
-      }
+    // Particle class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1;
+            this.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            
+            if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+            if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+        }
+        
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
-  </script>
+    
+    // Create particles
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+    
+    // Mouse interaction with particles
+    let mouseX = null;
+    let mouseY = null;
+    
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.x;
+        mouseY = e.y;
+    });
+    
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Update and draw particles
+        particles.forEach(particle => {
+            // React to mouse
+            if (mouseX && mouseY) {
+                const dx = particle.x - mouseX;
+                const dy = particle.y - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 100) {
+                    particle.x += dx / distance * 2;
+                    particle.y += dy / distance * 2;
+                }
+            }
+            
+            particle.update();
+            particle.draw();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Resize handler
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+    
+    // Click effect
+    document.addEventListener('click', () => {
+        // Create a ripple effect
+        for (let i = 0; i < 20; i++) {
+            particles.push(new Particle());
+        }
+        
+        // Name pulse effect
+        nameLetters.forEach(letter => {
+            letter.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                letter.style.transform = 'scale(1)';
+            }, 300);
+        });
+    });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj Kansagara - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4d4d;
+            --secondary-color: #6e45e2;
+            --accent-color: #88d3ce;
+            --text-glow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(110, 69, 226, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 77, 77, 0.15) 0%, transparent 30%);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: none;
+            touch-action: manipulation;
+        }
+        
+        .name-container {
+            position: relative;
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            background: rgba(20, 20, 20, 0.4);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
+        }
+        
+        .name-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+        }
+        
+        .name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: var(--text-glow);
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .name-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        .title {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #aaaaaa;
+            margin-top: 1.5rem;
+            font-weight: 300;
+            text-shadow: var(--text-glow);
+            opacity: 0.8;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .cursor {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            z-index: 100;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.2s ease;
+            mix-blend-mode: screen;
+        }
+        
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(0.5);
+            background: radial-gradient(circle, rgba(255,77,77,0.8) 0%, rgba(255,77,77,0) 70%);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            filter: blur(30px);
+            animation: float 15s infinite linear;
+        }
+        
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: 20%;
+            left: 10%;
+            animation-duration: 20s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            top: 60%;
+            left: 70%;
+            animation-duration: 25s;
+            animation-delay: 5s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-color);
+            top: 30%;
+            left: 50%;
+            animation-duration: 15s;
+            animation-delay: 2s;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(50px, 50px) rotate(180deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+            .cursor {
+                display: none;
+            }
+            
+            .name-container {
+                padding: 1.5rem;
+                backdrop-filter: blur(5px);
+            }
+            
+            .floating-shapes {
+                display: none;
+            }
+            
+            body {
+                cursor: default;
+            }
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .name {
+                font-size: 4.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="name-container">
+        <h1 class="name">
+            <span id="first-name" class="name-gradient">Raj</span>
+            <span id="last-name" class="name-gradient">Kansagara</span>
+        </h1>
+        <p class="title">Creative Developer & Designer</p>
+    </div>
+    
+    <canvas class="particles" id="particles"></canvas>
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+        // Enhanced animation scripts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Custom cursor with state
+            const cursor = document.getElementById('cursor');
+            let isCursorActive = false;
+            
+            // Name elements
+            const firstName = document.getElementById('first-name');
+            const lastName = document.getElementById('last-name');
+            const nameContainer = document.querySelector('.name-container');
+            
+            // Split names into letters
+            const firstNameLetters = firstName.textContent.split('');
+            const lastNameLetters = lastName.textContent.split('');
+            
+            firstName.innerHTML = firstNameLetters.map(letter => 
+                `<span class="name-letter">${letter === ' ' ? '&nbsp;' : letter}</span>`
+            ).join('');
+            
+            lastName.innerHTML = lastNameLetters.map(letter => 
+                `<span class="name-letter">${letter === ' ' ? '&nbsp;' : letter}</span>`
+            ).join('');
+            
+            const nameLetters = document.querySelectorAll('.name-letter');
+            
+            // Mouse move effects
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Calculate distance from center
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const distX = e.clientX - centerX;
+                const distY = e.clientY - centerY;
+                const distance = Math.sqrt(distX * distX + distY * distY);
+                
+                // Name container tilt effect
+                const tiltX = (distY / centerY) * 5;
+                const tiltY = -(distX / centerX) * 5;
+                nameContainer.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+                
+                // Letters animation
+                nameLetters.forEach((letter, i) => {
+                    const rect = letter.getBoundingClientRect();
+                    const x = e.clientX - (rect.left + rect.width/2);
+                    const y = e.clientY - (rect.top + rect.height/2);
+                    const distance = Math.sqrt(x*x + y*y);
+                    
+                    // Scale and translate effect
+                    const scale = Math.max(1, 1.3 - distance/300);
+                    const translateX = x / 20;
+                    const translateY = y / 20;
+                    
+                    letter.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                    
+                    // Color shift based on position
+                    const hue = (i * 15 + e.clientX / window.innerWidth * 180) % 360;
+                    letter.style.color = `hsl(${hue}, 80%, 65%)`;
+                });
+            });
+            
+            // Mouse down effect
+            document.addEventListener('mousedown', () => {
+                isCursorActive = true;
+                cursor.classList.add('active');
+                
+                // Name pulse effect
+                nameContainer.style.transform = 'scale(0.98)';
+                nameLetters.forEach(letter => {
+                    letter.style.transform = 'translateY(5px)';
+                });
+            });
+            
+            // Mouse up effect
+            document.addEventListener('mouseup', () => {
+                isCursorActive = false;
+                cursor.classList.remove('active');
+                
+                // Return to normal
+                nameContainer.style.transform = '';
+                nameLetters.forEach(letter => {
+                    letter.style.transform = '';
+                });
+            });
+            
+            // Touch support
+            document.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                simulateMouseEvent('mousedown', touch.clientX, touch.clientY);
+            }, {passive: true});
+            
+            document.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                simulateMouseEvent('mousemove', touch.clientX, touch.clientY);
+            }, {passive: true});
+            
+            document.addEventListener('touchend', () => {
+                simulateMouseEvent('mouseup');
+            });
+            
+            function simulateMouseEvent(type, x, y) {
+                const event = new MouseEvent(type, {
+                    clientX: x,
+                    clientY: y
+                });
+                document.dispatchEvent(event);
+            }
+            
+            // Particle system
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            let particles = [];
+            const particleCount = window.innerWidth < 768 ? 50 : 150;
+            
+            class Particle {
+                constructor() {
+                    this.reset();
+                    this.y = Math.random() * canvas.height;
+                    this.originalX = this.x;
+                    this.originalY = this.y;
+                }
+                
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 4 + 1;
+                    this.speedX = Math.random() * 2 - 1;
+                    this.speedY = Math.random() * 2 - 1;
+                    this.color = `hsla(${Math.random() * 60 + 200}, 80%, 60%, ${Math.random() * 0.5 + 0.2})`;
+                    this.angle = 0;
+                    this.velocity = Math.random() * 0.02;
+                    this.radius = Math.random() * 50 + 20;
+                }
+                
+                update(mouse) {
+                    // Orbit animation when no mouse interaction
+                    if (!mouse.x || !mouse.y) {
+                        this.angle += this.velocity;
+                        this.x = this.originalX + Math.cos(this.angle) * this.radius;
+                        this.y = this.originalY + Math.sin(this.angle) * this.radius;
+                    } else {
+                        // React to mouse
+                        const dx = this.x - mouse.x;
+                        const dy = this.y - mouse.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            this.x += dx / distance * 3;
+                            this.y += dy / distance * 3;
+                        }
+                        
+                        // Return to orbit position gradually
+                        const returnSpeed = 0.05;
+                        this.x += (this.originalX - this.x) * returnSpeed;
+                        this.y += (this.originalY - this.y) * returnSpeed;
+                    }
+                    
+                    // Keep particles within canvas
+                    if (this.x > canvas.width + 20 || this.x < -20 || 
+                        this.y > canvas.height + 20 || this.y < -20) {
+                        this.reset();
+                    }
+                }
+                
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Glow effect
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 15;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+            
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+            
+            // Mouse position tracking
+            let mouse = { x: null, y: null };
+            
+            document.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            
+            document.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw connecting lines between particles
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            ctx.strokeStyle = `hsla(200, 80%, 60%, ${1 - distance/100})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                // Update and draw particles
+                particles.forEach(particle => {
+                    particle.update(mouse);
+                    particle.draw();
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Resize handler
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                // Reset particles on resize
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            });
+            
+            // Click effect
+            document.addEventListener('click', (e) => {
+                // Create a ripple effect from click position
+                for (let i = 0; i < 10; i++) {
+                    const particle = new Particle();
+                    particle.x = e.clientX;
+                    particle.y = e.clientY;
+                    particle.speedX = Math.random() * 6 - 3;
+                    particle.speedY = Math.random() * 6 - 3;
+                    particle.size = Math.random() * 5 + 2;
+                    particles.push(particle);
+                }
+                
+                // Name pulse effect
+                nameContainer.style.transform = 'scale(0.95)';
+                nameLetters.forEach(letter => {
+                    letter.style.transform = 'translateY(8px) scale(1.2)';
+                    letter.style.color = `hsl(${Math.random() * 360}, 80%, 65%)`;
+                });
+                
+                setTimeout(() => {
+                    nameContainer.style.transform = '';
+                    nameLetters.forEach(letter => {
+                        letter.style.transform = '';
+                    });
+                }, 300);
+            });
+            
+            // Initial animation
+            setTimeout(() => {
+                nameContainer.style.opacity = '1';
+                nameContainer.style.transform = 'translateY(0)';
+                nameLetters.forEach((letter, i) => {
+                    letter.style.transition = `all 0.3s ease ${i * 0.05}s`;
+                    letter.style.opacity = '1';
+                    letter.style.transform = 'translateY(0)';
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html> -->
