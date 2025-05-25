@@ -206,7 +206,7 @@
             margin-top: 20px;
         }
 
-        .view-project a{
+        .view-project a {
             color: inherit;
             text-decoration: none;
             display: block;
@@ -307,7 +307,7 @@
 
         @media (max-width: 768px) {
             .name {
-                font-size: 2rem;
+                font-size: 3rem;
             }
 
             .tech-item {
@@ -440,17 +440,25 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
     </style>
+    <script src="./script.js"></script>
 </head>
 
 <body>
     <script>
-        const burger = document.getElementById('burger');
-        const navLinks = document.getElementById('nav-links');
+        document.addEventListener('DOMContentLoaded', function () {
+            const burger = document.getElementById('burger');
+            const navLinks = document.getElementById('nav-links');
 
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-            burger.classList.toggle('toggle');
-        });
+            if (burger && navLinks) {
+                burger.addEventListener('click', function () {
+                    navLinks.classList.toggle('nav-active');
+                    burger.classList.toggle('toggle');
+                });
+            } else {
+                console.error('Burger or nav-links element not found.');
+            }
+        }
+        );
     </script>
     <header class="nav-container">
         <div class="logo">Raj</div>
@@ -459,9 +467,11 @@
             <li><a href="#tech">Tech Stack</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><button class="submit-btn" style="background-color: #ddd;color: #000000;"><a href="" download="hero-contactUs.png" style="text-decoration: none; color: inherit;">Download CV</a></button></li>
+            <li><button class="submit-btn" style="background-color: #ddd;color: #000000;"><a href=""
+                        download="hero-contactUs.png" style="text-decoration: none; color: inherit;">Download
+                        CV</a></button></li>
         </ul>
-        <div class="burger" id="burger">
+        <div class="burger" id="burger" onclick="toggleNav()">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
@@ -477,29 +487,34 @@
         </div>
     </div>
 
-   <section id="about" class="section about-section">
-    <div class="container">
-        <h2>About Me</h2>
-        <div class="content">
-            <p>
-                I’m a passionate <strong><em>Full Stack Web Developer</em></strong> with a strong foundation in 
-                <strong><em>ASP.NET Core</em></strong>, <strong><em>Angular</em></strong>, and 
-                <strong><em>Web API</em></strong> development. I focus on building 
-                <strong>scalable</strong>, <strong>secure</strong>, and <strong>user-centric</strong> web applications that 
-                solve real-world problems and enhance user engagement. With hands-on experience in both 
-                <strong>frontend</strong> and <strong>backend</strong> technologies, I enjoy turning complex requirements into 
-                <strong><em>seamless digital experiences</em></strong>.
-            </p>
-            <p>
-                Currently working at <strong>Xelentor Technologies Pvt Ltd</strong>, I’ve contributed to projects like 
-                <strong><em>influencer platforms</em></strong> and <strong><em>financial management systems</em></strong>, where I’ve 
-                implemented features like <strong>secure authentication</strong>, <strong>RESTful APIs</strong>, and 
-                <strong>real-time logging</strong>. I’m always looking to <em>learn</em>, <em>adapt</em>, and bring value to 
-                <strong><em>innovative, collaborative development teams</em></strong>.
-            </p>
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="content">
+                <p>
+                    I’m a passionate <strong><em>Full Stack Web Developer</em></strong> with a strong foundation in
+                    <strong><em>ASP.NET Core</em></strong>, <strong><em>Angular</em></strong>, and
+                    <strong><em>Web API</em></strong> development. I focus on building
+                    <strong>scalable</strong>, <strong>secure</strong>, and <strong>user-centric</strong> web
+                    applications that
+                    solve real-world problems and enhance user engagement. With hands-on experience in both
+                    <strong>frontend</strong> and <strong>backend</strong> technologies, I enjoy turning complex
+                    requirements into
+                    <strong><em>seamless digital experiences</em></strong>.
+                </p>
+                <p>
+                    Currently working at <strong>Xelentor Technologies Pvt Ltd</strong>, I’ve contributed to projects
+                    like
+                    <strong><em>influencer platforms</em></strong> and <strong><em>financial management
+                            systems</em></strong>, where I’ve
+                    implemented features like <strong>secure authentication</strong>, <strong>RESTful APIs</strong>, and
+                    <strong>real-time logging</strong>. I’m always looking to <em>learn</em>, <em>adapt</em>, and bring
+                    value to
+                    <strong><em>innovative, collaborative development teams</em></strong>.
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <div class="divider"></div>
@@ -704,7 +719,8 @@
                 <p>This is the influencer platform and I have developed many of the things this is the influencer
                     platform and I have developed many of the things this is the influencer platform and I have
                     developed many of the things I this.</p>
-                <button class="view-project"> <a href="https://keepuspostd.com/" target="_blank" >View Project</a></button>
+                <button class="view-project"> <a href="https://keepuspostd.com/" target="_blank">View
+                        Project</a></button>
             </div>
 
             <div class="project-card">
